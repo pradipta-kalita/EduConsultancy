@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "CoursePurchasedEvent",
+  "namespace": "com.pol.payment_service.schema.avro",
+  "fields": [
+    { "name": "orderId", "type": "string" },
+    { "name": "userName", "type": "string" },
+    { "name":  "amount", "type":  "string"},
+    { "name":  "currency", "type": "string"},
+    { "name":  "product", "type":  "string"},
+    { "name":  "time", "type": "string"}
+  ]
+}
