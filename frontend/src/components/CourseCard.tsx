@@ -13,7 +13,7 @@ export function CourseCard({ course }: CourseCardProps) {
         <Card className="flex flex-col h-full text-sm">
             <CardHeader>
                 <img
-                    src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*QnEHTb57iUU8KPQ-gBzw6w.png"
+                    src={course.imageUrl || "https://miro.medium.com/v2/resize:fit:720/format:webp/1*QnEHTb57iUU8KPQ-gBzw6w.png"}
                     alt={course.title}
                     width={200}
                     height={100}

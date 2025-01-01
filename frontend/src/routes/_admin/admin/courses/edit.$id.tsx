@@ -6,7 +6,7 @@ import { fetchAllCategories, fetchCourseById, updateCourse } from '@/service/cou
 import { useNavigate } from '@tanstack/react-router';
 import { CourseRequestDTO, createCourseSchema } from '@/schemas/createCourseSchema.tsx';
 import { CourseStatus } from '@/types/courseTypes.ts';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const Route = createFileRoute('/_admin/admin/courses/edit/$id')({
   component: RouteComponent,
@@ -14,25 +14,19 @@ export const Route = createFileRoute('/_admin/admin/courses/edit/$id')({
 
 function RouteComponent() {
   const navigate = useNavigate();
-  const { id } = Route.useParams(); // Fetch ID from URL
+  const { id } = Route.useParams();
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  // Query for fetching categories
   const { data: categories, isLoading: isCategoriesLoading, error: categoriesError } = useQuery({
     queryKey: ['categories'],
     queryFn: fetchAllCategories,
   });
 
-  // Query for fetching course details
-  const {
-    data: courseDetails,
-    isLoading: isCourseLoading,
-    error: courseError,
-  } = useQuery({
+  const { data: courseDetails, isLoading: isCourseLoading, error: courseError } = useQuery({
     queryKey: ['course', id],
     queryFn: () => fetchCourseById(id),
   });
 
-  // React Hook Form setup with Zod
   const {
     register,
     handleSubmit,
@@ -40,19 +34,18 @@ function RouteComponent() {
     setValue,
   } = useForm<CourseRequestDTO>({
     resolver: zodResolver(createCourseSchema),
-    defaultValues: courseDetails, // Set default values when data is available
+    defaultValues: courseDetails,
   });
 
-  // Update form values when courseDetails are loaded
   useEffect(() => {
     if (courseDetails) {
       Object.entries(courseDetails).forEach(([key, value]) => {
         setValue(key as keyof CourseRequestDTO, value);
       });
+      setImagePreview(courseDetails.imageUrl || null);
     }
   }, [courseDetails, setValue]);
 
-  // Mutation for updating a course
   const mutation = useMutation({
     mutationFn: (updatedCourse: CourseRequestDTO) => updateCourse(id, updatedCourse),
     onSuccess: () => {
@@ -71,7 +64,16 @@ function RouteComponent() {
     },
   });
 
-  // Submit handler
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreview(imageUrl);
+    } else {
+      setImagePreview(null);
+    }
+  };
+
   const onSubmit = (data: CourseRequestDTO) => {
     mutation.mutate(data);
   };
@@ -104,9 +106,7 @@ function RouteComponent() {
                 {...register('description')}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
             />
-            {errors.description && (
-                <p className="text-sm text-red-600">{errors.description.message}</p>
-            )}
+            {errors.description && <p className="text-sm text-red-600">{errors.description.message}</p>}
           </div>
 
           <div>
@@ -154,8 +154,21 @@ function RouteComponent() {
                   </option>
               ))}
             </select>
-            {errors.categoryId && (
-                <p className="text-sm text-red-600">{errors.categoryId.message}</p>
+            {errors.categoryId && <p className="text-sm text-red-600">{errors.categoryId.message}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Image</label>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm"
+            />
+            {imagePreview && (
+                <div className="mt-4">
+                  <img src={imagePreview} alt="Course Preview" className="w-full max-h-60 object-cover" />
+                </div>
             )}
           </div>
 

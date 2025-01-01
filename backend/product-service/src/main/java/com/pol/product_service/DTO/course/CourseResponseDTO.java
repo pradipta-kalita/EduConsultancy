@@ -24,5 +24,5 @@ public class CourseResponseDTO {
     private CategoryResponseDTO category;
     private String instructor;
     private UUID instructorId;
-
+    private String imageUrl;
 }

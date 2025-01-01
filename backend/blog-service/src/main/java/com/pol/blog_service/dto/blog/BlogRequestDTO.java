@@ -26,6 +26,9 @@ public class BlogRequestDTO {
     @NotBlank(message = "Please write something")
     private String content;
 
+    @NotBlank(message = "Please provide imageUrl")
+    private String imageUrl;
+
     @Size(max = 10, message = "You can add up to 10 tags only.")
     @NotNull(message = "You need to provide at least one tag.")
     private Set<UUID> tagIds;

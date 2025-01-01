@@ -17,14 +17,14 @@ import java.util.UUID;
 public interface CourseRepository extends JpaRepository<Course, UUID> {
 
     @Query(
-            "SELECT new com.pol.product_service.DTO.course.CourseSummaryDTO(c.id, c.title, c.summary, c.price, c.instructor) " +
+            "SELECT new com.pol.product_service.DTO.course.CourseSummaryDTO(c.id, c.title, c.summary, c.price, c.instructor, c.imageUrl) " +
                     "FROM Course c " +
                     "WHERE c.status = :status"
     )
     Page<CourseSummaryDTO> findAllCoursesByStatus(@Param("status") CourseStatus status, Pageable pageable);
 
     @Query(
-            "SELECT new com.pol.product_service.DTO.course.CourseSummaryDTO(c.id, c.title, c.summary, c.price, c.instructor) " +
+            "SELECT new com.pol.product_service.DTO.course.CourseSummaryDTO(c.id, c.title, c.summary, c.price, c.instructor, c.imageUrl) " +
                     "FROM Course c " +
                     "WHERE LOWER(c.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
                     "OR LOWER(c.description) LIKE LOWER(CONCAT('%', :keyword, '%'))"  +

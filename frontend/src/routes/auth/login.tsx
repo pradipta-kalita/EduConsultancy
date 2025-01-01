@@ -29,12 +29,9 @@ function RouteComponent() {
 
     try {
       const response =await  axios.post('/auth/login', data);
-      // Assuming the response contains username, role, and accessToken
       const { username, role, accessToken } = response.data;
-      // Store the user data (e.g., using the login method from context)
       const user = { username, role, accessToken };
-      console.log(user)
-      login(user); // Update the user state in context
+      login(user);
       if(user.role=='ADMIN'){
         navigate({to:'/admin'})
       }else if(user.role=='STUDENT'){

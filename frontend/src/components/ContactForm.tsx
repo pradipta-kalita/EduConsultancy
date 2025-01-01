@@ -19,7 +19,7 @@ export default function ContactForm() {
     const onSubmit = async (data: ContactFormData) => {
         setIsLoading(true); // Show loading state
         setServerMessage(null); // Clear any previous messages
-
+        console.log(data)
         try {
             const response = await axios.post('http://localhost:8080/contactus', data, {
                 headers: {
@@ -61,13 +61,13 @@ export default function ContactForm() {
                 </label>
                 <input
                     id="phone"
-                    {...register('phone')}
+                    {...register('phoneNumber')}
                     type="tel"
                     className={`mt-1 block w-full px-3 py-2 bg-white border ${
-                        errors.phone ? 'border-red-500' : 'border-gray-300'
+                        errors.phoneNumber ? 'border-red-500' : 'border-gray-300'
                     } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
                 />
-                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>}
+                {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber.message}</p>}
             </div>
 
             {/* Email */}

@@ -89,6 +89,7 @@ public class EmailService {
         }
 
         if (forgotPasswordObj.getAttempts() >= 3) {
+            System.out.println("Too Many Attempts. Current Attempts: " + forgotPasswordObj.getAttempts());
             forgotPasswordRepository.deleteById(forgotPasswordObj.getId());
             throw new TooManyAttemptsException("Too many attempts. Please request a new OTP.");
         }

@@ -26,6 +26,9 @@ public class CourseRequestDTO {
     @DecimalMax(value = "999999.99", message = "Price cannot exceed 999999.99")
     private BigDecimal price;
 
+    @NotBlank(message = "Please provide imageUrl")
+    private String imageUrl;
+
     @NotNull(message = "Status cannot be null")
     @ValidCourseStatus(allowedValues = {CourseStatus.ACTIVE, CourseStatus.INACTIVE}, message = "Status must be ACTIVE or INACTIVE")
     private CourseStatus status;

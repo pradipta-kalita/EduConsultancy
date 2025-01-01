@@ -41,6 +41,8 @@ public class Course{
     @Column(nullable = false)
     private UUID instructorId;
 
+    private String imageUrl;
+
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")

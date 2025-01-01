@@ -3,15 +3,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { useState } from 'react';
 import { feedbackFormSchema, FeedbackFormData } from '../schemas/feedbackFormSchema'; // Adjust path
+import { FaStar } from 'react-icons/fa'; // Install react-icons if not already installed
 
 export default function FeedbackForm() {
     const [serverMessage, setServerMessage] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [rating, setRating] = useState<number>(0);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm<FeedbackFormData>({
         resolver: zodResolver(feedbackFormSchema),
     });
@@ -19,9 +22,8 @@ export default function FeedbackForm() {
     const onSubmit = async (data: FeedbackFormData) => {
         setIsLoading(true); // Show loading state
         setServerMessage(null); // Clear any previous messages
-
         try {
-            const response = await axios.post('http://localhost:8080/feedbacks', data, {
+            const response = await axios.post('http://localhost:8080/feedbacks', { ...data, rating }, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -32,8 +34,13 @@ export default function FeedbackForm() {
             console.log('Error:', error);
             setServerMessage('Failed to submit feedback. Please try again later.');
         } finally {
-            setIsLoading(false); // Hide loading state
+            setIsLoading(false);
         }
+    };
+
+    const handleStarClick = (value: number) => {
+        setRating(value);
+        setValue('rating', value.toString());
     };
 
     return (
@@ -84,6 +91,25 @@ export default function FeedbackForm() {
                     } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500`}
                 ></textarea>
                 {errors.feedback && <p className="text-red-500 text-sm mt-1">{errors.feedback.message}</p>}
+            </div>
+
+            {/* Rating */}
+            <div>
+                <label htmlFor="rating" className="block text-sm font-medium text-gray-700">
+                    Rating
+                </label>
+                <div className="flex items-center space-x-2">
+                    {[1, 2, 3, 4, 5].map((value) => (
+                        <FaStar
+                            key={value}
+                            className={`cursor-pointer text-2xl ${
+                                value <= rating ? 'text-yellow-500' : 'text-gray-300'
+                            }`}
+                            onClick={() => handleStarClick(value)}
+                        />
+                    ))}
+                </div>
+                {errors.rating && <p className="text-red-500 text-sm mt-1">{errors.rating.message}</p>}
             </div>
 
             {/* Submit Button */}

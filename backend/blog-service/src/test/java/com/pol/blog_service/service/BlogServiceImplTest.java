@@ -146,7 +146,7 @@ class BlogServiceImplTest {
         String sortBy = "title";
         String order = "asc";
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Order.asc(sortBy)));
-        BlogSummaryDTO blogSummary = new BlogSummaryDTO(UUID.randomUUID(), "Sample Blog",  LocalDateTime.now(), "This is a sample blog content.", BlogStatus.PUBLISHED, "testUser", UUID.randomUUID());
+        BlogSummaryDTO blogSummary = new BlogSummaryDTO(UUID.randomUUID(), "Sample Blog",  LocalDateTime.now(), "This is a sample blog content.", BlogStatus.PUBLISHED, "testUser", UUID.randomUUID(), "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z7FRbJlCIIcBgNT74dhKiA.png");
         Page<BlogSummaryDTO> blogPage = new PageImpl<>(Collections.singletonList(blogSummary));
 
         when(blogRepository.searchByKeyword(keyword, pageable)).thenReturn(blogPage);

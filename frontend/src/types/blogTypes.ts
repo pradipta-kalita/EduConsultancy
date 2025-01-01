@@ -16,6 +16,7 @@ export interface BlogSummary {
     author: string;
     authorId: string;
     status: string;
+    imageUrl:string;
 }
 
 export interface BlogResponse {
@@ -25,6 +26,7 @@ export interface BlogResponse {
     authorId: string;
     publishedAt: string;
     content: string;
+    imageUrl: string;
 }
 
 export interface BlogAdminResponse {
@@ -34,6 +36,7 @@ export interface BlogAdminResponse {
     authorId: string;
     publishedAt: string;
     content: string;
+    imageUrl: string;
     status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
     tags: TagSummary[];
 }

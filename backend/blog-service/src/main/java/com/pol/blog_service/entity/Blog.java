@@ -36,6 +36,8 @@ public class Blog {
 
     private UUID authorId;
 
+    private String imageUrl;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "blog_tags",

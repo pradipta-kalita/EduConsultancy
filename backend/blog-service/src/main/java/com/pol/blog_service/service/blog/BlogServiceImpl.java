@@ -57,7 +57,7 @@ public class BlogServiceImpl implements BlogService{
         blog.setTitle(blogRequestDTO.getTitle());
         blog.setContent(blogRequestDTO.getContent());
         blog.setStatus(blogRequestDTO.getStatus());
-
+        blog.setImageUrl(blogRequestDTO.getImageUrl());
         blog.getTags().forEach(tag -> tag.getBlogs().remove(blog)); // Remove this blog from each tag
         blog.setTags(new HashSet<>(tagsRepository.findAllById(blogRequestDTO.getTagIds())));
 

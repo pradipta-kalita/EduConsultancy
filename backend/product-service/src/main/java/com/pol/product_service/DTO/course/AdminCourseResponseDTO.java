@@ -22,4 +22,5 @@ public class AdminCourseResponseDTO {
     private BigDecimal price;
     private CategoryResponseDTO category;
     private CourseStatus status;
+    private String imageUrl;
 }

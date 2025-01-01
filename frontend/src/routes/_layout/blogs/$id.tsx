@@ -69,7 +69,7 @@ function RouteComponent() {
 
         <div className="flex justify-center mb-6">
           <img
-              src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z7FRbJlCIIcBgNT74dhKiA.png"
+              src={post.imageUrl ||"https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z7FRbJlCIIcBgNT74dhKiA.png"}
               alt="Server Icon"
               className="rounded-lg shadow-sm border border-gray-200"
           />

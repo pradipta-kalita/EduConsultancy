@@ -5,12 +5,14 @@ import {zodResolver} from "@hookform/resolvers/zod";
 
 import {SignupFormData, signupSchema} from "../../schemas/signupSchema.tsx";
 import {useState} from "react";
+import {useAuth} from "@/auth/authContext.tsx";
 
 export const Route = createFileRoute('/auth/signup')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  const {login}  = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate({from:'/auth/signup'});
 
@@ -32,12 +34,14 @@ function RouteComponent() {
           'Content-Type': 'application/json',
         },
       });
-      console.log('Success:', response.data);
-      setIsLoading(false); // Stop the spinner
+      const { username, role, accessToken } = response.data;
+      const user = { username, role, accessToken };
+      login(user);
+      setIsLoading(false);
       await navigate({to: '/blogs'})
     } catch (error) {
       console.error('Error:', error);
-      setIsLoading(false); // Stop the spinner
+      setIsLoading(false);
       await navigate({to: '/notfound'})
     }
   };

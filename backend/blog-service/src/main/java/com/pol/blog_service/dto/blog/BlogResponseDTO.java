@@ -23,6 +23,7 @@ public class BlogResponseDTO {
     private String author;
     private UUID authorId;
     private BlogStatus status;
+    private String imageUrl;
     @Builder.Default
     private Set<TagSummaryDTO> tags= new HashSet<>();
 }

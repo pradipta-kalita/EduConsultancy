@@ -34,6 +34,7 @@ export interface CourseSummary {
     summary:string;
     instructor:string;
     price:number;
+    imageUrl:string;
 }
 
 export interface AdminCourseResponse {
@@ -44,6 +45,7 @@ export interface AdminCourseResponse {
     status:CourseStatus;
     price:number;
     category:CategoryResponse;
+    imageUrl:string;
 }
 
 export interface CourseResponse {
@@ -55,6 +57,7 @@ export interface CourseResponse {
     price:number;
     category:CategoryResponse;
     instructorId:string;
+    imageUrl:string;
 }
 
 export interface CourseRequest {
@@ -64,6 +67,7 @@ export interface CourseRequest {
     price:number;
     status:CourseStatus;
     categoryId:string;
+    imageUrl:string;
 }
 
 export enum CourseStatus {

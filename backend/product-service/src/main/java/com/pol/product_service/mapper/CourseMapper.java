@@ -16,6 +16,7 @@ public class CourseMapper {
                 .summary(dto.getSummary())
                 .price(dto.getPrice())
                 .status(dto.getStatus())
+                .imageUrl(dto.getImageUrl())
                 .build();
     }
 
@@ -28,6 +29,7 @@ public class CourseMapper {
                 .price(course.getPrice())
                 .instructor(course.getInstructor())
                 .instructorId(course.getInstructorId())
+                .imageUrl(course.getImageUrl())
                 .category(course.getCategory()==null?null:CategoryMapper.toResponseDTO(course.getCategory()))
                 .build();
     }
@@ -39,6 +41,7 @@ public class CourseMapper {
                 .description(course.getDescription())
                 .summary(course.getSummary())
                 .price(course.getPrice())
+                .imageUrl(course.getImageUrl())
                 .category(course.getCategory()==null?null:CategoryMapper.toResponseDTO(course.getCategory()))
                 .status(course.getStatus())
                 .build();

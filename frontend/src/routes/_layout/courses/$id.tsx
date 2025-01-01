@@ -28,7 +28,7 @@ function RouteComponent() {
   useEffect(() => {
     // Dynamically update the title when the fetchedCourse data changes
     if (fetchedCourse?.title) {
-      document.title = `${fetchedCourse.title} | Blog`;
+      document.title = `${fetchedCourse.title} `;
     } else {
       document.title = "Loading... | Blog";
     }
@@ -84,7 +84,7 @@ function RouteComponent() {
 
         <main className="max-w-4xl mx-auto px-4 py-8">
           <img
-              src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*QnEHTb57iUU8KPQ-gBzw6w.png"
+              src={fetchedCourse.imageUrl || "https://miro.medium.com/v2/resize:fit:720/format:webp/1*QnEHTb57iUU8KPQ-gBzw6w.png"}
               alt={fetchedCourse.title}
               width={800}
               height={400}

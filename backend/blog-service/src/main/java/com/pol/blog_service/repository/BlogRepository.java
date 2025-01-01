@@ -18,7 +18,7 @@ import java.util.UUID;
 public interface BlogRepository extends JpaRepository<Blog, UUID> {
 
     @Query(
-            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId) " +
+            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId, b.imageUrl) " +
                     "FROM Blog b " +
                     "JOIN b.tags t " +
                     "WHERE t.id = :tagId " +
@@ -36,7 +36,7 @@ public interface BlogRepository extends JpaRepository<Blog, UUID> {
 //    Optional<BlogResponseDTO> findBlogByIdWithTags(@Param("blogId") UUID blogId);
 
     @Query(
-            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId) " +
+            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId, b.imageUrl) " +
             "FROM Blog b " +
             "WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(b.content) LIKE LOWER(CONCAT('%', :keyword, '%'))"  +
@@ -46,7 +46,7 @@ public interface BlogRepository extends JpaRepository<Blog, UUID> {
 
 
     @Query(
-            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId) " +
+            "SELECT new com.pol.blog_service.dto.blog.BlogSummaryDTO(b.id, b.title, b.publishedAt, b.summary, b.status, b.author, b.authorId, b.imageUrl) " +
                     "FROM Blog b " +
                     "WHERE (:status IS NULL OR b.status = :status)"
     )

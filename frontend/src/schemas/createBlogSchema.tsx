@@ -10,6 +10,7 @@ export const BlogRequestSchema = z.object({
     status: z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED'], {
         errorMap: () => ({ message: "Please select a valid status for the blog." }),
     }),
+    imageUrl: z.string().url({ message: "Please provide a valid image URL." }),
 });
 
 export type BlogRequestDTO = z.infer<typeof BlogRequestSchema>;

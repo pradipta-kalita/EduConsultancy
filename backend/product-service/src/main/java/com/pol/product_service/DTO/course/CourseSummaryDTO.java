@@ -16,4 +16,5 @@ public class CourseSummaryDTO {
     private String summary;
     private BigDecimal price;
     private String instructor;
+    private String imageUrl;
 }

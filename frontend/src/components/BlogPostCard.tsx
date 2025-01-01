@@ -1,17 +1,7 @@
 import {Link} from "@tanstack/react-router";
+import {BlogSummary} from "@/types/blogTypes.ts";
 
-
-export interface BlogPost {
-    id: string;
-    title: string;
-    publishedAt: string;
-    summary: string;
-    status: string;
-    author: string;
-    authorId: string;
-}
-
-export function BlogPostCard({ post }: { post: BlogPost }) {
+export function BlogPostCard({ post }: { post: BlogSummary }) {
     // Format the publication date for readability
     const formattedDate = new Date(post.publishedAt).toLocaleDateString(undefined, {
         year: "numeric",
@@ -58,7 +48,7 @@ export function BlogPostCard({ post }: { post: BlogPost }) {
                 </div>
                 <Link to="/blogs/$id" className="block flex-shrink-0" params={{id: post.id}}>
                     <img
-                        src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z7FRbJlCIIcBgNT74dhKiA.png" // Static placeholder image
+                        src={post.imageUrl || "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z7FRbJlCIIcBgNT74dhKiA.png"} // Static placeholder image
                         alt={post.title}
                         width={112}
                         height={112}

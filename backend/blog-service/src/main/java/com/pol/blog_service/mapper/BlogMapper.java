@@ -12,6 +12,7 @@ public class BlogMapper {
                 .title(blogRequestDTO.getTitle())
                 .content(blogRequestDTO.getContent())
                 .status(blogRequestDTO.getStatus())
+                .imageUrl(blogRequestDTO.getImageUrl())
                 .build();
     }
 
@@ -25,6 +26,7 @@ public class BlogMapper {
                 .publishedAt(blog.getPublishedAt().toString())
                 .status(blog.getStatus())
                 .tags(blog.getTags().stream().map(TagsMapper::toSummaryDTO).collect(Collectors.toSet()))
+                .imageUrl(blog.getImageUrl())
                 .build();
     }
 }

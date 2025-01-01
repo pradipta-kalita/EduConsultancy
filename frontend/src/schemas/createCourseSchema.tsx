@@ -11,6 +11,7 @@ export const createCourseSchema = z.object({
         { message: "Status must be ACTIVE or INACTIVE" }
     ),
     categoryId: z.string().uuid("Invalid category ID"),
+    imageUrl: z.string().url({ message: "Please provide a valid image URL." }),
 });
 
 // Infer the CourseRequestDTO type from the schema
