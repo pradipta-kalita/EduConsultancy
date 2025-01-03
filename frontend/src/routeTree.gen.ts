@@ -33,7 +33,6 @@ import { Route as LayoutCoursesIdImport } from './routes/_layout/courses/$id'
 import { Route as LayoutBlogsIdImport } from './routes/_layout/blogs/$id'
 import { Route as AdminAdminSettingsImport } from './routes/_admin/admin/settings'
 import { Route as AdminAdminSearchImport } from './routes/_admin/admin/search'
-import { Route as AdminAdminInboxImport } from './routes/_admin/admin/inbox'
 import { Route as AdminAdminDashboardImport } from './routes/_admin/admin/dashboard'
 import { Route as AdminAdminCalenderImport } from './routes/_admin/admin/calender'
 import { Route as LayoutUserProfileIndexImport } from './routes/_layout/_user/profile/index'
@@ -182,12 +181,6 @@ const AdminAdminSettingsRoute = AdminAdminSettingsImport.update({
 const AdminAdminSearchRoute = AdminAdminSearchImport.update({
   id: '/admin/search',
   path: '/admin/search',
-  getParentRoute: () => AdminRoute,
-} as any)
-
-const AdminAdminInboxRoute = AdminAdminInboxImport.update({
-  id: '/admin/inbox',
-  path: '/admin/inbox',
   getParentRoute: () => AdminRoute,
 } as any)
 
@@ -438,13 +431,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminDashboardImport
       parentRoute: typeof AdminImport
     }
-    '/_admin/admin/inbox': {
-      id: '/_admin/admin/inbox'
-      path: '/admin/inbox'
-      fullPath: '/admin/inbox'
-      preLoaderRoute: typeof AdminAdminInboxImport
-      parentRoute: typeof AdminImport
-    }
     '/_admin/admin/search': {
       id: '/_admin/admin/search'
       path: '/admin/search'
@@ -628,7 +614,6 @@ declare module '@tanstack/react-router' {
 interface AdminRouteChildren {
   AdminAdminCalenderRoute: typeof AdminAdminCalenderRoute
   AdminAdminDashboardRoute: typeof AdminAdminDashboardRoute
-  AdminAdminInboxRoute: typeof AdminAdminInboxRoute
   AdminAdminSearchRoute: typeof AdminAdminSearchRoute
   AdminAdminSettingsRoute: typeof AdminAdminSettingsRoute
   AdminAdminIndexRoute: typeof AdminAdminIndexRoute
@@ -653,7 +638,6 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAdminCalenderRoute: AdminAdminCalenderRoute,
   AdminAdminDashboardRoute: AdminAdminDashboardRoute,
-  AdminAdminInboxRoute: AdminAdminInboxRoute,
   AdminAdminSearchRoute: AdminAdminSearchRoute,
   AdminAdminSettingsRoute: AdminAdminSettingsRoute,
   AdminAdminIndexRoute: AdminAdminIndexRoute,
@@ -739,7 +723,6 @@ export interface FileRoutesByFullPath {
   '/': typeof LayoutIndexRoute
   '/admin/calender': typeof AdminAdminCalenderRoute
   '/admin/dashboard': typeof AdminAdminDashboardRoute
-  '/admin/inbox': typeof AdminAdminInboxRoute
   '/admin/search': typeof AdminAdminSearchRoute
   '/admin/settings': typeof AdminAdminSettingsRoute
   '/blogs/$id': typeof LayoutBlogsIdRoute
@@ -782,7 +765,6 @@ export interface FileRoutesByTo {
   '/': typeof LayoutIndexRoute
   '/admin/calender': typeof AdminAdminCalenderRoute
   '/admin/dashboard': typeof AdminAdminDashboardRoute
-  '/admin/inbox': typeof AdminAdminInboxRoute
   '/admin/search': typeof AdminAdminSearchRoute
   '/admin/settings': typeof AdminAdminSettingsRoute
   '/blogs/$id': typeof LayoutBlogsIdRoute
@@ -829,7 +811,6 @@ export interface FileRoutesById {
   '/_layout/': typeof LayoutIndexRoute
   '/_admin/admin/calender': typeof AdminAdminCalenderRoute
   '/_admin/admin/dashboard': typeof AdminAdminDashboardRoute
-  '/_admin/admin/inbox': typeof AdminAdminInboxRoute
   '/_admin/admin/search': typeof AdminAdminSearchRoute
   '/_admin/admin/settings': typeof AdminAdminSettingsRoute
   '/_layout/blogs/$id': typeof LayoutBlogsIdRoute
@@ -874,7 +855,6 @@ export interface FileRouteTypes {
     | '/'
     | '/admin/calender'
     | '/admin/dashboard'
-    | '/admin/inbox'
     | '/admin/search'
     | '/admin/settings'
     | '/blogs/$id'
@@ -916,7 +896,6 @@ export interface FileRouteTypes {
     | '/'
     | '/admin/calender'
     | '/admin/dashboard'
-    | '/admin/inbox'
     | '/admin/search'
     | '/admin/settings'
     | '/blogs/$id'
@@ -961,7 +940,6 @@ export interface FileRouteTypes {
     | '/_layout/'
     | '/_admin/admin/calender'
     | '/_admin/admin/dashboard'
-    | '/_admin/admin/inbox'
     | '/_admin/admin/search'
     | '/_admin/admin/settings'
     | '/_layout/blogs/$id'
@@ -1034,7 +1012,6 @@ export const routeTree = rootRoute
       "children": [
         "/_admin/admin/calender",
         "/_admin/admin/dashboard",
-        "/_admin/admin/inbox",
         "/_admin/admin/search",
         "/_admin/admin/settings",
         "/_admin/admin/",
@@ -1130,10 +1107,6 @@ export const routeTree = rootRoute
     },
     "/_admin/admin/dashboard": {
       "filePath": "_admin/admin/dashboard.tsx",
-      "parent": "/_admin"
-    },
-    "/_admin/admin/inbox": {
-      "filePath": "_admin/admin/inbox.tsx",
       "parent": "/_admin"
     },
     "/_admin/admin/search": {

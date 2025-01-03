@@ -6,6 +6,7 @@ import {fetchBlogs} from "@/service/blogs.ts";
 import {useInView} from "react-intersection-observer";
 import {useEffect} from "react";
 import {BlogPageResponse, BlogSummary} from "@/types/blogTypes.ts";
+import {Loader} from "@/components/Loader.tsx";
 
 
 export const Route = createFileRoute('/_layout/blogs/')({
@@ -40,7 +41,7 @@ function RouteComponent() {
     }, [fetchNextPage,inView]);
 
   if(isLoading){
-    return <div className="text-center">Loading...</div>;
+    return <Loader/>;
   }
   if(isError){
     return (<div className="text-center text-red-600">There was an error</div>)

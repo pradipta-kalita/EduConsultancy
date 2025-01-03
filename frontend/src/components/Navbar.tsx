@@ -41,12 +41,20 @@ const Navbar: React.FC = () => {
                         {user ?(<UserMenu user={user} logout={logout} />
                         ) : (
                             // Login Button
+                            <>
                             <Link
                                 to="/auth/signup"
                                 className="flex items-center justify-center text-white font-bold bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 px-6 py-2 rounded-full shadow-md transition-transform transform hover:scale-105"
                             >
+                                Signup
+                            </Link>
+                            <Link
+                                to="/auth/login"
+                                className="flex items-center justify-center text-white font-bold bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 px-6 py-2 rounded-full shadow-md transition-transform transform hover:scale-105"
+                            >
                                 Login
                             </Link>
+                            </>
                         )}
                     </div>
                 </div>

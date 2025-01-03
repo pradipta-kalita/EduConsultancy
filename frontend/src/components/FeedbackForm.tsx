@@ -13,6 +13,7 @@ export default function FeedbackForm() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
         setValue,
     } = useForm<FeedbackFormData>({
@@ -30,6 +31,7 @@ export default function FeedbackForm() {
             });
             console.log('Success:', response.data);
             setServerMessage('Thank you for your feedback!');
+            reset();
         } catch (error) {
             console.log('Error:', error);
             setServerMessage('Failed to submit feedback. Please try again later.');
