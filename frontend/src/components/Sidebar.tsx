@@ -25,7 +25,7 @@ const topics = [
 ]
 
 
-export default function Sidebar({ className = '' }: { className?: string }) {
+export default function Sidebar({ className = '' }: Readonly<{ className?: string }>) {
     return (
         <aside className={className}>
             <div className="space-y-8">
@@ -67,7 +67,6 @@ export default function Sidebar({ className = '' }: { className?: string }) {
                         ))}
                     </div>
                 </section>
-
             </div>
         </aside>
     )

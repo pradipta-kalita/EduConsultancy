@@ -14,6 +14,7 @@ import { fetchCoursesPage } from "@/service/courses";
 import { CourseSummary } from "@/types/courseTypes";
 import {courseSearchSchema} from "@/schemas/courseSearchSchema.tsx";
 import {zodValidator} from "@tanstack/zod-adapter";
+import {Loader} from "@/components/Loader.tsx";
 
 
 export const Route = createFileRoute("/_layout/courses/")({
@@ -33,7 +34,7 @@ function RouteComponent() {
       placeholderData: keepPreviousData,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader/>;
   if (isError) return <div>Error loading courses.</div>;
 
   if (!data) {

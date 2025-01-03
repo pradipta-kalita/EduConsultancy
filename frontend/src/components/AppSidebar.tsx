@@ -10,7 +10,7 @@ import {
   SidebarMenuButton, 
   SidebarMenuItem, 
   useSidebar } from "./ui/sidebar";
-  import { Home, Inbox, Search, Settings, LogOut,SquarePen,Tag,GraduationCap,Folder, MessageCircle, Phone,School2 } from "lucide-react";
+  import { LayoutDashboard,Home , CircleUserRound, LogOut,SquarePen,Tag,GraduationCap,Folder, MessageCircle, Phone,School2 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 import { useAuth } from "@/auth/authContext";
@@ -20,10 +20,9 @@ const sidebarData = [
   {
     label: "Contents",
     items: [
-      { to: "/admin/dashboard", icon: Home, label: "Dashboard" },
-      { to: "/admin/inbox", icon: Inbox, label: "Inbox" },
-      { to: "/admin/search", icon: Search, label: "Search" },
-      { to: "/admin/settings", icon: Settings, label: "Settings" },
+      { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+      { to: "/profile", icon: CircleUserRound, label: "Profile" },
+      { to: "/", icon: Home, label: "Home" },
     ],
   },
   {

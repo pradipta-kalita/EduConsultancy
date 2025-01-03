@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import React, {useState} from "react";
+import {Link} from "@tanstack/react-router";
 import {User} from "@/auth/authContext.tsx";
 
-const UserMenu: React.FC<{ user: User; logout: () => void }> = ({ user, logout }) => {
+const UserMenu: React.FC<{ user: User; logout: () => void }> = ({user, logout}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => setIsOpen(!isOpen);
@@ -23,13 +23,14 @@ const UserMenu: React.FC<{ user: User; logout: () => void }> = ({ user, logout }
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg z-50">
                     <ul className="py-1 text-gray-700">
                         <li>
-                            <Link
-                                to="/"
-                                onClick={closeMenu}
-                                className="block px-4 py-2 hover:bg-gray-100"
-                            >
-                                Dashboard
-                            </Link>
+                            {user.role === 'ADMIN' &&
+                                <Link
+                                    to="/admin/dashboard"
+                                    onClick={closeMenu}
+                                    className="block px-4 py-2 hover:bg-gray-100"
+                                >
+                                    Dashboard
+                                </Link>}
                         </li>
                         <li>
                             <Link
@@ -38,15 +39,6 @@ const UserMenu: React.FC<{ user: User; logout: () => void }> = ({ user, logout }
                                 className="block px-4 py-2 hover:bg-gray-100"
                             >
                                 Profile
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/"
-                                onClick={closeMenu}
-                                className="block px-4 py-2 hover:bg-gray-100"
-                            >
-                                Settings
                             </Link>
                         </li>
                         <li>
