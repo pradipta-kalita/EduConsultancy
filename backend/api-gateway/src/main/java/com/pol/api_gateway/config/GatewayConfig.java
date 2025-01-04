@@ -68,6 +68,12 @@ public class GatewayConfig {
                                 .filter(getJwtAuthorizationFilter(ALL_ROLES)))
                         .uri(PAYMENT_SERVICE_LB))
 
+                // USER ROUTES FOR THE PAYMENTS SERVICE
+                .route("payment_service_admin", r -> r.path("/admin/payments/**")
+                        .filters(f -> f.rewritePath("/admin/payments(?<segment>/?.*)", "/payment-service/admin/payments${segment}")
+                                .filter(getJwtAuthorizationFilter(ADMIN_ONLY)))
+                        .uri(PAYMENT_SERVICE_LB))
+
                 // ADMIN ROUTES FOR THE BLOG SERVICE
                 .route("blog_service_admin_blogs", r -> r.path("/admin/blogs/**")
                         .filters(f ->

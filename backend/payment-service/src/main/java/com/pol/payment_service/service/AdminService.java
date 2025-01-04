@@ -26,6 +26,14 @@ public class AdminService {
         }
         Pageable pageable = PageRequest.of(page,size,sort);
         Page<Payment> payments = paymentRepository.findAll(pageable);
-        return null;
+        return PaymentPageResponseDTO.builder()
+                .list(payments.getContent())
+                .currentPage(payments.getNumber())
+                .totalPages(payments.getTotalPages())
+                .totalElements(payments.getTotalElements())
+                .pageSize(payments.getSize())
+                .hasNext(payments.hasNext())
+                .hasPrevious(payments.hasPrevious())
+                .build();
     }
 }
