@@ -35,10 +35,11 @@ function RouteComponent() {
         },
       });
       const { username, role, accessToken } = response.data;
+      console.log(response.data);
       const user = { username, role, accessToken };
       login(user);
       setIsLoading(false);
-      await navigate({to: '/blogs'})
+      await navigate({to: '/auth/login'})
     } catch (error) {
       console.error('Error:', error);
       setIsLoading(false);

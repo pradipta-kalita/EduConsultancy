@@ -11,6 +11,7 @@ export default function ContactForm() {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<ContactFormData>({
         resolver: zodResolver(contactFormSchema),
@@ -28,6 +29,7 @@ export default function ContactForm() {
             });
             console.log('Success:', response.data);
             setServerMessage('Thank you for your message. We’ll get back to you soon!');
+            reset();
         } catch (error) {
             console.log('Error:', error);
             setServerMessage('Failed to send the message. Please try again later.');
