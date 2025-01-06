@@ -26,6 +26,10 @@ public class AdminService {
         }
         Pageable pageable = PageRequest.of(page,size,sort);
         Page<Payment> payments = paymentRepository.findAll(pageable);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
         return PaymentPageResponseDTO.builder()
                 .list(payments.getContent())
                 .currentPage(payments.getNumber())

@@ -34,7 +34,7 @@ const PaymentList: React.FC<PaymentListProps> = ({ payments }) => {
                                     <TableCell>
                                         {new Intl.NumberFormat("en-IN", {
                                             style: "currency",
-                                            currency: "INR",
+                                            currency: payment.currency,
                                         }).format(payment.amount/100)}
                                     </TableCell>
 
