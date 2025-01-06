@@ -25,7 +25,8 @@ export function CourseCard({ course }: CourseCardProps) {
                 <p className="text-sm text-gray-600 mb-1">Instructor: {course.instructor}</p>
                 <p className="text-sm text-gray-600 mb-2">Duration: 3 weeks</p>
                 <p className="text-sm text-gray-700 mb-4 line-clamp-4">{course.summary}</p>
-                <p className="text-lg font-bold text-primary">${course.price.toFixed(2)}</p>
+                <p className="text-lg font-bold text-primary"><span>&#8377;</span>{course.price.toFixed(2)}/-
+                </p>
             </CardContent>
             <CardFooter>
                 <Button variant="outline" className="w-full">

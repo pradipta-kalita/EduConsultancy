@@ -62,7 +62,7 @@ const CourseList: React.FC<CourseListProps> = ({ courses }) => {
                             >
                                 <TableCell>{course.title}</TableCell>
                                 <TableCell>{course.instructor}</TableCell>
-                                <TableCell>${course.price.toFixed(2)}</TableCell>
+                                <TableCell><span>&#8377;</span>{course.price.toFixed(2)}</TableCell>
                                 <TableCell className="text-right">
                                     <div className="flex justify-end items-center space-x-2">
                                         <Tooltip>

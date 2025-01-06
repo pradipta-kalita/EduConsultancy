@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginFormValues, loginSchema } from '../../schemas/loginSchema.tsx';
@@ -22,7 +22,6 @@ function RouteComponent() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
   });
-
 
   const onSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
@@ -104,6 +103,16 @@ function RouteComponent() {
               )}
             </div>
 
+            <p className="text-center text-gray-600">
+              Forgot password ?{' '}
+              <Link
+                  to="/auth/forgot-password"
+                  className="text-primary-light hover:underline"
+              >
+                Reset Now
+              </Link>
+            </p>
+
             {/* Submit Button */}
             <div className="mb-6">
               <button
@@ -150,7 +159,7 @@ function RouteComponent() {
                 to="/auth/signup"
                 className="text-primary-light hover:underline"
             >
-              Sign up
+            Sign up
             </Link>
           </p>
         </div>
