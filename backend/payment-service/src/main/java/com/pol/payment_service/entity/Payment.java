@@ -14,16 +14,16 @@ public class Payment {
 
     @Id
     @Column(length = 50)
-    private String id; // Razorpay Order ID
+    private String id;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal amount; // Total order amount
+    private BigDecimal amount;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal amountPaid = BigDecimal.ZERO; // Amount already paid
+    private BigDecimal amountPaid = BigDecimal.ZERO;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal amountDue; // Remaining amount to be paid
+    private BigDecimal amountDue;
 
     @Column(nullable = false, length = 3)
     private String currency;
