@@ -3,11 +3,11 @@ import Navbar from "../components/Navbar.tsx";
 import Footer from "@/components/Footer.tsx";
 
 export const Route = createFileRoute('/_layout')({
-  component: RouteComponent,
+    component: RouteComponent,
 })
 
 function RouteComponent() {
-  return (<>
+    return (<>
         <Navbar/>
         <Outlet/>
         <Footer/>
