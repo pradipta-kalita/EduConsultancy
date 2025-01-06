@@ -10,9 +10,9 @@ eureka:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3309/payments
+    url: jdbc:mysql://localhost:3306/payments
     username: root
-    password: root
+    password: PFH#23kgrw9
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connection-timeout: 5000
