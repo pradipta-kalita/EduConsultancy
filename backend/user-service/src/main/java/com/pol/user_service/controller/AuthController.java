@@ -2,7 +2,6 @@ package com.pol.user_service.controller;
 
 import com.pol.user_service.auth.dto.AuthResponseDTO;
 import com.pol.user_service.auth.dto.LoginRequestDTO;
-import com.pol.user_service.auth.dto.RefreshTokenRequestDTO;
 import com.pol.user_service.auth.dto.RegisterRequestDTO;
 import com.pol.user_service.auth.model.RefreshToken;
 import com.pol.user_service.auth.model.User;
