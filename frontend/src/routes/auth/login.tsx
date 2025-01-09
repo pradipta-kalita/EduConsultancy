@@ -103,8 +103,8 @@ function RouteComponent() {
               )}
             </div>
 
-            <p className="text-center text-gray-600">
-              Forgot password ?{' '}
+            <p className="text-center flex justify-items-start mb-2 text-gray-600">
+              <span className='pr-1'>Forgot password? </span>
               <Link
                   to="/auth/forgot-password"
                   className="text-primary-light hover:underline"
@@ -154,7 +154,7 @@ function RouteComponent() {
 
           {/* Signup Redirect */}
           <p className="text-center text-gray-600">
-            Don't have an account?{' '}
+            Don't have an account? {' '}
             <Link
                 to="/auth/signup"
                 className="text-primary-light hover:underline"
