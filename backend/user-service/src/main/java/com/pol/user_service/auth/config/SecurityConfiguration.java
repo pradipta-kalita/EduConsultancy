@@ -26,16 +26,16 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/auth/**","/swagger-ui/**","/api-docs","/swagger-ui.html", "/profile")
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/**", "/swagger-ui/**", "/api-docs",
+                                "/swagger-ui.html", "/profile")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
-                .sessionManagement(session->session
+                .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(authFilterService, UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 }

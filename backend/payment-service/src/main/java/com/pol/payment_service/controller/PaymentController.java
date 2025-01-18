@@ -4,11 +4,9 @@ import com.pol.payment_service.client.ProductFeignClient;
 import com.pol.payment_service.dto.ApiResponse;
 import com.pol.payment_service.dto.CoursePriceDTO;
 import com.pol.payment_service.dto.PaymentRequestDTO;
-import com.pol.payment_service.entity.Payment;
 import com.pol.payment_service.exceptions.ProductNotFoundException;
 import com.pol.payment_service.service.PaymentService;
 import com.razorpay.RazorpayException;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,11 +31,7 @@ public class PaymentController {
     public ResponseEntity<ApiResponse<String>> createOrder(@RequestBody @Valid PaymentRequestDTO paymentRequestDTO, @RequestHeader("X-User-Id") String userId) {
         try {
             String orderId = paymentService.createOrder(paymentRequestDTO,userId);
-<<<<<<< HEAD
-            return ResponseEntity.ok(new ApiResponse<>(HttpStatus.OK.value(), "Order created successfully", orderId));
-=======
             return ResponseEntity.ok(new ApiResponse<>(HttpStatus.CREATED.value(), "Order created successfully", orderId));
->>>>>>> origin/main
         } catch (RazorpayException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Order creation failed", null));
@@ -51,11 +45,7 @@ public class PaymentController {
     public ResponseEntity<ApiResponse<CoursePriceDTO>> getCoursePrice(@PathVariable UUID id) {
         try {
             CoursePriceDTO coursePriceDTO = productFeignClient.getCoursePriceById(id);
-<<<<<<< HEAD
-            return ResponseEntity.ok(new ApiResponse<>(HttpStatus.OK.value(), "Course price retrieved", coursePriceDTO));
-=======
             return ResponseEntity.ok(new ApiResponse<>(HttpStatus.CREATED.value(), "Course price retrieved", coursePriceDTO));
->>>>>>> origin/main
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ApiResponse<>(HttpStatus.NOT_FOUND.value(), "Course not found", null));
@@ -66,11 +56,7 @@ public class PaymentController {
     public ResponseEntity<ApiResponse<String>> verifyPayment(@RequestBody Map<String, String> paymentDetails) {
         try {
             String verificationStatus = paymentService.verifyPayment(paymentDetails);
-<<<<<<< HEAD
-            return ResponseEntity.ok(new ApiResponse<>(HttpStatus.OK.value(), "Payment verified successfully", verificationStatus));
-=======
             return ResponseEntity.ok(new ApiResponse<>(HttpStatus.CREATED.value(), "Payment verified successfully", verificationStatus));
->>>>>>> origin/main
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ApiResponse<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Payment verification failed", null));

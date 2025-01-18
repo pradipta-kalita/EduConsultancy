@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import {Link} from "@tanstack/react-router";
+import {Link,useNavigate} from "@tanstack/react-router";
 import {User} from "@/auth/authContext.tsx";
 
 const UserMenu: React.FC<{ user: User; logout: () => void }> = ({user, logout}) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate = useNavigate();
     const toggleMenu = () => setIsOpen(!isOpen);
     const closeMenu = () => setIsOpen(false);
 
@@ -46,6 +46,7 @@ const UserMenu: React.FC<{ user: User; logout: () => void }> = ({user, logout}) 
                                 onClick={() => {
                                     logout();
                                     closeMenu();
+                                    navigate({to:"/"});
                                 }}
                                 className="w-full text-left px-4 py-2 hover:bg-gray-100"
                             >
